@@ -1,0 +1,14 @@
+todo-app is k project ka naam hai
+
+
+
+package
+express  framework hai
+nodemon
+dotenv :dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
+mongoose for data base say connect karnay k liye
+
+{
+    "email":"syahah@gmail.com",
+    "password":"1234567"
+}
