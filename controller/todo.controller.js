@@ -1,24 +1,3 @@
-// import Todo from "../model/todo.model.js"
-
-// export const createTodo = async (req, res) => {
-//     const todo = new Todo({
-//         text: req.body.text,
-//         completed: req.body.completed
-//     })
-
-
-//     // jo b data aeyga us ko ye save karega
-//     try {
-//         const newTodo =await todo.save();
-//         res.status(201).json({ message: "todo created succesfully", newTodo });
-
-//     } catch (error) {
-//         console.log(error)
-//         res.status(400).json({ message: " error in todo creation" })
-//     }
-
-// }
-
 
 // new
 import Todo from "../model/todo.model.js";
