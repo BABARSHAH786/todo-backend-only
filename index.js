@@ -93,6 +93,14 @@ app.get("/", (req, res) => {
   });
 });
 
+// cookie route
+res.cookie("jwt", token, {
+  httpOnly: true,
+  secure: true,        //  must be true on Render (HTTPS)
+  sameSite: "None",    //  must be 'None' for cross-origin cookies
+});
+
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server is running on port ${PORT}`);
