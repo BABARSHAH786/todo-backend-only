@@ -26,10 +26,9 @@ export const generateTokenAndSaveInCookies = async (userId, res) => {
 
   res.cookie("jwt", token, {
     httpOnly: true,
-    secure: true,           // ✅ Required for HTTPS (Render)
-    sameSite: "None",       // ✅ Required for cross-origin cookies
-    path: "/",
-    maxAge: 10 * 24 * 60 * 60 * 1000, // ✅ 10 days
+    secure: true,        // ✅ Required for Render (HTTPS)
+    sameSite: "None",    // ✅ Required for cross-origin cookie
+    maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days
   });
 
   await User.findByIdAndUpdate(userId, { token });

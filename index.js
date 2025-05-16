@@ -58,22 +58,23 @@ import userRoute from "./route/user.route.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 4002;
+const PORT = process.env.PORT || 4001;
 const DB_URI = process.env.MONGODB_URI;
 
 // Middleware
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
-    methods: "GET,POST,PUT,DELETE",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Database connection
+// DB Connection
 try {
   await mongoose.connect(DB_URI);
   console.log("✅ Connected to MongoDB");
@@ -85,23 +86,14 @@ try {
 app.use("/todo", todoRoute);
 app.use("/user", userRoute);
 
-// ✅ Root route to fix "Cannot GET /"
+// Default route
 app.get("/", (req, res) => {
   res.json({
     status: "OK",
-    message: "✅ Todo backend is running! Weelcome to babar backend",
+    message: "✅ Todo backend is running! Welcome to babar backend",
   });
 });
 
-// cookie route
-res.cookie("jwt", token, {
-  httpOnly: true,
-  secure: true,        //  must be true on Render (HTTPS)
-  sameSite: "None",    //  must be 'None' for cross-origin cookies
-});
-
-
-// Start server
 app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
